@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Case of the Missing Dependencies - A Detective Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Creepster&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header with sarcastic marketing -->
+        <header class="game-header">
+            <h1 class="game-title">The Case of the Missing Dependencies</h1>
+            <div class="marketing-banner">
+                <p class="sarcastic-text">"Recommended 10/10 by System Administrators"</p>
+                <p class="subtitle">A thrilling detective mystery where your Docker images vanish faster than your sanity!</p>
+                <div class="marketing-quotes">
+                    <p class="quote">"Finally, a game that captures the true DevOps experience!" - Alex, Senior DevOps Engineer</p>
+                    <p class="quote">"I love how realistic the panic feels when builds start failing!" - Morgan, Security Admin</p>
+                    <p class="quote">"10/10 would accidentally delete production images again!" - Jordan, Automation Lead</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Game Status Bar -->
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="label">Time Until CEO Notices:</span>
+                <span id="timer" class="timer">05:00</span>
+            </div>
+            <div class="status-item">
+                <span class="label">Build Status:</span>
+                <span id="build-status" class="build-status failing">FAILING</span>
+            </div>
+            <div class="status-item">
+                <span class="label">Evidence Collected:</span>
+                <span id="evidence-count" class="evidence-count">0/7</span>
+            </div>
+        </div>
+
+        <!-- Main Game Board -->
+        <div class="game-board">
+            <!-- Investigation Panel -->
+            <div class="investigation-panel">
+                <h2>Investigation Board</h2>
+                <div class="case-file">
+                    <h3>Case Summary</h3>
+                    <p id="case-summary">Critical Docker images have mysteriously vanished from the company registry. Production builds are failing. Find the culprit and recover the missing dependencies before the CEO discovers the outage!</p>
+                </div>
+                
+                <div class="evidence-board">
+                    <h3>Evidence Collected</h3>
+                    <div id="evidence-list" class="evidence-list">
+                        <!-- Evidence items will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suspects Panel -->
+            <div class="suspects-panel">
+                <h2>Suspects</h2>
+                <div class="suspects-grid">
+                    <div class="suspect-card" data-suspect="alex">
+                        <img src="alex-profile.svg" alt="Alex Chen - DevOps Engineer" class="suspect-photo">
+                        <h4>Alex "Cleanup" Chen</h4>
+                        <p>Senior DevOps Engineer</p>
+                        <p class="motive">Obsessed with disk space optimization</p>
+                    </div>
+                    
+                    <div class="suspect-card" data-suspect="morgan">
+                        <img src="morgan-profile.svg" alt="Morgan Davis - Security Administrator" class="suspect-photo">
+                        <h4>Morgan "Security" Davis</h4>
+                        <p>Security Administrator</p>
+                        <p class="motive">Removes "vulnerable" old packages</p>
+                    </div>
+                    
+                    <div class="suspect-card" data-suspect="jordan">
+                        <img src="jordan-profile.svg" alt="Jordan Kim - Infrastructure Automation Lead" class="suspect-photo">
+                        <h4>Jordan "Automation" Kim</h4>
+                        <p>Infrastructure Automation Lead</p>
+                        <p class="motive">Scripts everything, including cleanup</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clue Areas -->
+            <div class="clue-areas">
+                <h2>Investigation Areas</h2>
+                <div class="clue-grid">
+                    <div class="clue-area" data-clue="logs" id="clue-logs">
+                        <h3>🗂️ System Logs</h3>
+                        <p>Check the audit logs for deletion activities</p>
+                    </div>
+                    
+                    <div class="clue-area" data-clue="slack" id="clue-slack">
+                        <h3>💬 Slack History</h3>
+                        <p>Review team communications</p>
+                    </div>
+                    
+                    <div class="clue-area" data-clue="registry" id="clue-registry">
+                        <h3>🐳 Docker Registry</h3>
+                        <p>Examine registry deletion history</p>
+                    </div>
+                    
+                    <div class="clue-area" data-clue="scripts" id="clue-scripts">
+                        <h3>📜 Automation Scripts</h3>
+                        <p>Investigate cleanup automation</p>
+                    </div>
+                    
+                    <div class="clue-area" data-clue="tickets" id="clue-tickets">
+                        <h3>🎫 Support Tickets</h3>
+                        <p>Check recent maintenance requests</p>
+                    </div>
+                    
+                    <div class="clue-area" data-clue="monitoring" id="clue-monitoring">
+                        <h3>📊 Monitoring Alerts</h3>
+                        <p>Review system monitoring data</p>
+                    </div>
+                    
+                    <div class="clue-area" data-clue="backup" id="clue-backup">
+                        <h3>💾 Backup Systems</h3>
+                        <p>Search for package backups</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for clue details -->
+        <div id="clue-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3 id="modal-title"></h3>
+                <div id="modal-body"></div>
+                <button id="collect-evidence" class="btn-primary">Collect Evidence</button>
+            </div>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="game-over-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="game-result-title"></h2>
+                <p id="game-result-message"></p>
+                <button id="restart-game" class="btn-primary">Start New Investigation</button>
+            </div>
+        </div>
+
+        <!-- Game Controls -->
+        <div class="game-controls">
+            <button id="make-accusation" class="btn-primary" disabled>Make Accusation</button>
+            <button id="restart-btn" class="btn-secondary">Restart Investigation</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

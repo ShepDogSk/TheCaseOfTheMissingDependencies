@@ -1,0 +1,83 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="jordanBg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#21262d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1117;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="jordanShirt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#30363d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#21262d;stop-opacity:1" />
+    </linearGradient>
+    <filter id="automationGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="60" cy="60" r="58" fill="url(#jordanBg)" stroke="#f85149" stroke-width="2" opacity="0.8"/>
+  <circle cx="60" cy="60" r="55" fill="none" stroke="#f85149" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Body/Shirt -->
+  <path d="M35 85 Q35 75 45 75 L75 75 Q85 75 85 85 L85 115 Q85 120 80 120 L40 120 Q35 120 35 115 Z" fill="url(#jordanShirt)" stroke="#30363d" stroke-width="1"/>
+  
+  <!-- Head -->
+  <circle cx="60" cy="45" r="18" fill="#8b949e" stroke="#6e7681" stroke-width="1"/>
+  
+  <!-- Hair (casual, tech-style) -->
+  <path d="M42 35 Q44 30 48 32 Q52 28 56 30 Q60 26 64 30 Q68 28 72 32 Q76 30 78 35 Q76 40 72 38 Q68 42 64 40 Q60 44 56 40 Q52 42 48 38 Q44 40 42 35" fill="#6e7681" stroke="#30363d" stroke-width="1"/>
+  
+  <!-- Eyes (focused on screens) -->
+  <circle cx="55" cy="42" r="2" fill="#f0f6fc"/>
+  <circle cx="65" cy="42" r="2" fill="#f0f6fc"/>
+  <circle cx="55" cy="42" r="1" fill="#0d1117"/>
+  <circle cx="65" cy="42" r="1" fill="#0d1117"/>
+  
+  <!-- Eyebrows (concentrated) -->
+  <path d="M52 38 L58 39" stroke="#6e7681" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M62 39 L68 38" stroke="#6e7681" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Nose -->
+  <circle cx="60" cy="47" r="1" fill="#6e7681"/>
+  
+  <!-- Mouth (slight smile - confident in automation) -->
+  <path d="M57 52 Q60 54 63 52" stroke="#6e7681" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  
+  <!-- Headphones around neck -->
+  <path d="M45 65 Q50 62 55 65 Q60 68 65 65 Q70 62 75 65" stroke="#58a6ff" stroke-width="2" fill="none"/>
+  <circle cx="45" cy="65" r="3" fill="#58a6ff" opacity="0.8"/>
+  <circle cx="75" cy="65" r="3" fill="#58a6ff" opacity="0.8"/>
+  
+  <!-- Automation/CI-CD Badge on shirt -->
+  <rect x="55" y="85" width="10" height="8" fill="#3fb950" stroke="#f85149" stroke-width="1" rx="2" filter="url(#automationGlow)"/>
+  <circle cx="58" cy="89" r="1" fill="#f0f6fc"/>
+  <circle cx="62" cy="89" r="1" fill="#f0f6fc"/>
+  <path d="M58 89 L62 89" stroke="#f0f6fc" stroke-width="0.5"/>
+  
+  <!-- Laptop/tablet in hand -->
+  <rect x="70" y="80" width="10" height="7" fill="#21262d" stroke="#58a6ff" stroke-width="0.5" rx="1"/>
+  <rect x="71" y="81" width="8" height="4" fill="#0d1117"/>
+  <rect x="72" y="82" width="2" height="1" fill="#3fb950" opacity="0.8"/>
+  <rect x="75" y="82" width="2" height="1" fill="#f85149" opacity="0.8"/>
+  <rect x="72" y="84" width="3" height="0.5" fill="#58a6ff" opacity="0.6"/>
+  
+  <!-- Code symbols floating around (automation magic) -->
+  <text x="40" y="50" fill="#3fb950" font-size="6" opacity="0.6" font-family="monospace">{}</text>
+  <text x="80" y="55" fill="#58a6ff" font-size="6" opacity="0.6" font-family="monospace">[]</text>
+  <text x="45" y="75" fill="#d29922" font-size="5" opacity="0.5" font-family="monospace">λ</text>
+  
+  <!-- Smart watch -->
+  <rect x="42" y="88" width="6" height="4" fill="#21262d" stroke="#3fb950" stroke-width="0.5" rx="1"/>
+  <circle cx="45" cy="90" r="0.5" fill="#3fb950"/>
+  
+  <!-- Name tag -->
+  <rect x="45" y="95" width="22" height="8" fill="#21262d" stroke="#f85149" stroke-width="0.5" rx="1"/>
+  <text x="56" y="100" text-anchor="middle" fill="#f85149" font-size="4" font-family="monospace">JORDAN</text>
+  
+  <!-- Automation status indicator -->
+  <circle cx="75" cy="95" r="3" fill="#3fb950" opacity="0.8"/>
+  <path d="M73 95 L75 97 L77 93" stroke="#0d1117" stroke-width="1" fill="none" stroke-linecap="round"/>
+</svg>

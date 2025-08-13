@@ -1,0 +1,170 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark table surface -->
+  <rect x="0" y="0" width="800" height="600" fill="#161b22" stroke="#21262d" stroke-width="3"/>
+
+  <!-- Dark wood grain effect -->
+  <defs>
+    <pattern id="darkWoodGrain" patternUnits="userSpaceOnUse" width="100" height="20">
+      <rect width="100" height="20" fill="#161b22"/>
+      <path d="M0,10 Q25,5 50,10 T100,10" stroke="#21262d" stroke-width="1" fill="none" opacity="0.4"/>
+      <path d="M0,15 Q30,12 60,15 T100,15" stroke="#21262d" stroke-width="1" fill="none" opacity="0.3"/>
+    </pattern>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="800" height="600" fill="url(#darkWoodGrain)"/>
+
+  <!-- Game board background -->
+  <rect x="50" y="50" width="700" height="500" fill="#0d1117" stroke="#30363d" stroke-width="2" rx="12"/>
+  <rect x="52" y="52" width="696" height="496" fill="none" stroke="#f85149" stroke-width="1" rx="10" opacity="0.3"/>
+  
+  <!-- Title area -->
+  <rect x="70" y="70" width="660" height="80" fill="#161b22" stroke="#f85149" stroke-width="1" rx="8"/>
+  <rect x="72" y="72" width="656" height="76" fill="none" stroke="#f85149" stroke-width="1" rx="6" opacity="0.3"/>
+  <text x="400" y="100" text-anchor="middle" fill="#f85149" font-family="serif" font-size="24" font-weight="bold" filter="url(#glow)">
+    The Case of the Missing Dependencies
+  </text>
+  <text x="400" y="125" text-anchor="middle" fill="#d29922" font-family="monospace" font-size="14">
+    "Recommended 10/10 by System Administrators"
+  </text>
+  
+  <!-- Investigation panel -->
+  <rect x="70" y="170" width="320" height="180" fill="#161b22" stroke="#30363d" stroke-width="1" rx="8"/>
+  <rect x="72" y="172" width="316" height="176" fill="none" stroke="#f85149" stroke-width="1" rx="6" opacity="0.2"/>
+  <text x="230" y="190" text-anchor="middle" fill="#f85149" font-family="monospace" font-size="16" font-weight="bold">Investigation Board</text>
+
+  <!-- Evidence cards scattered -->
+  <rect x="80" y="200" width="60" height="40" fill="#21262d" stroke="#d29922" stroke-width="1" rx="4"/>
+  <text x="110" y="215" text-anchor="middle" fill="#d29922" font-size="8">EVIDENCE</text>
+  <text x="110" y="225" text-anchor="middle" fill="#f0f6fc" font-size="6">Log Files</text>
+
+  <rect x="150" y="210" width="60" height="40" fill="#21262d" stroke="#d29922" stroke-width="1" rx="4"/>
+  <text x="180" y="225" text-anchor="middle" fill="#d29922" font-size="8">EVIDENCE</text>
+  <text x="180" y="235" text-anchor="middle" fill="#f0f6fc" font-size="6">Slack Msgs</text>
+
+  <rect x="220" y="205" width="60" height="40" fill="#21262d" stroke="#d29922" stroke-width="1" rx="4"/>
+  <text x="250" y="220" text-anchor="middle" fill="#d29922" font-size="8">EVIDENCE</text>
+  <text x="250" y="230" text-anchor="middle" fill="#f0f6fc" font-size="6">Registry</text>
+
+  <!-- Case file -->
+  <rect x="80" y="260" width="300" height="80" fill="#0d1117" stroke="#f85149" stroke-width="1" rx="4"/>
+  <rect x="82" y="262" width="296" height="76" fill="none" stroke="#f85149" stroke-width="1" rx="2" opacity="0.3"/>
+  <text x="90" y="275" fill="#f85149" font-size="10" font-weight="bold">CASE FILE</text>
+  <text x="90" y="290" fill="#8b949e" font-size="8">Docker images vanished from registry</text>
+  <text x="90" y="300" fill="#8b949e" font-size="8">Production builds failing</text>
+  <text x="90" y="310" fill="#8b949e" font-size="8">Find culprit before CEO notices!</text>
+  
+  <!-- Suspects panel -->
+  <rect x="410" y="170" width="320" height="180" fill="#161b22" stroke="#30363d" stroke-width="1" rx="8"/>
+  <rect x="412" y="172" width="316" height="176" fill="none" stroke="#f85149" stroke-width="1" rx="6" opacity="0.2"/>
+  <text x="570" y="190" text-anchor="middle" fill="#f85149" font-family="monospace" font-size="16" font-weight="bold">Suspects</text>
+
+  <!-- Suspect cards -->
+  <g id="suspect1">
+    <rect x="420" y="200" width="90" height="120" fill="#21262d" stroke="#f85149" stroke-width="1" rx="6"/>
+    <circle cx="465" cy="230" r="15" fill="#30363d" stroke="#f85149" stroke-width="1"/>
+    <rect x="450" y="250" width="30" height="30" fill="#30363d" stroke="#f85149" stroke-width="1"/>
+    <text x="465" y="290" text-anchor="middle" fill="#d29922" font-size="8">Alex Chen</text>
+    <text x="465" y="300" text-anchor="middle" fill="#8b949e" font-size="6">DevOps</text>
+    <text x="465" y="310" text-anchor="middle" fill="#f85149" font-size="6">Cleanup Obsessed</text>
+  </g>
+
+  <g id="suspect2">
+    <rect x="520" y="200" width="90" height="120" fill="#21262d" stroke="#f85149" stroke-width="1" rx="6"/>
+    <circle cx="565" cy="230" r="15" fill="#30363d" stroke="#f85149" stroke-width="1"/>
+    <rect x="550" y="250" width="30" height="30" fill="#30363d" stroke="#f85149" stroke-width="1"/>
+    <text x="565" y="290" text-anchor="middle" fill="#d29922" font-size="8">Morgan Davis</text>
+    <text x="565" y="300" text-anchor="middle" fill="#8b949e" font-size="6">Security</text>
+    <text x="565" y="310" text-anchor="middle" fill="#f85149" font-size="6">Removes "Vulns"</text>
+  </g>
+
+  <g id="suspect3">
+    <rect x="620" y="200" width="90" height="120" fill="#21262d" stroke="#f85149" stroke-width="1" rx="6"/>
+    <circle cx="665" cy="230" r="15" fill="#30363d" stroke="#f85149" stroke-width="1"/>
+    <rect x="650" y="250" width="30" height="30" fill="#30363d" stroke="#f85149" stroke-width="1"/>
+    <text x="665" y="290" text-anchor="middle" fill="#d29922" font-size="8">Jordan Kim</text>
+    <text x="665" y="300" text-anchor="middle" fill="#8b949e" font-size="6">Automation</text>
+    <text x="665" y="310" text-anchor="middle" fill="#f85149" font-size="6">Scripts Everything</text>
+  </g>
+  
+  <!-- Clue areas -->
+  <rect x="70" y="370" width="660" height="160" fill="#161b22" stroke="#30363d" stroke-width="1" rx="8"/>
+  <rect x="72" y="372" width="656" height="156" fill="none" stroke="#f85149" stroke-width="1" rx="6" opacity="0.2"/>
+  <text x="400" y="390" text-anchor="middle" fill="#f85149" font-family="monospace" font-size="16" font-weight="bold">Investigation Areas</text>
+
+  <!-- Clue tokens scattered around -->
+  <circle cx="100" cy="420" r="20" fill="#21262d" stroke="#f85149" stroke-width="2"/>
+  <circle cx="100" cy="420" r="18" fill="none" stroke="#f85149" stroke-width="1" opacity="0.3"/>
+  <text x="100" y="415" text-anchor="middle" fill="#f0f6fc" font-size="12">🗂️</text>
+  <text x="100" y="440" text-anchor="middle" fill="#8b949e" font-size="8">Logs</text>
+
+  <circle cx="180" cy="430" r="20" fill="#21262d" stroke="#f85149" stroke-width="2"/>
+  <circle cx="180" cy="430" r="18" fill="none" stroke="#f85149" stroke-width="1" opacity="0.3"/>
+  <text x="180" y="425" text-anchor="middle" fill="#f0f6fc" font-size="12">💬</text>
+  <text x="180" y="450" text-anchor="middle" fill="#8b949e" font-size="8">Slack</text>
+
+  <circle cx="260" cy="415" r="20" fill="#21262d" stroke="#f85149" stroke-width="2"/>
+  <circle cx="260" cy="415" r="18" fill="none" stroke="#f85149" stroke-width="1" opacity="0.3"/>
+  <text x="260" y="410" text-anchor="middle" fill="#f0f6fc" font-size="12">🐳</text>
+  <text x="260" y="435" text-anchor="middle" fill="#8b949e" font-size="8">Registry</text>
+
+  <circle cx="340" cy="425" r="20" fill="#21262d" stroke="#f85149" stroke-width="2"/>
+  <circle cx="340" cy="425" r="18" fill="none" stroke="#f85149" stroke-width="1" opacity="0.3"/>
+  <text x="340" y="420" text-anchor="middle" fill="#f0f6fc" font-size="12">📜</text>
+  <text x="340" y="445" text-anchor="middle" fill="#8b949e" font-size="8">Scripts</text>
+
+  <circle cx="420" cy="410" r="20" fill="#21262d" stroke="#f85149" stroke-width="2"/>
+  <circle cx="420" cy="410" r="18" fill="none" stroke="#f85149" stroke-width="1" opacity="0.3"/>
+  <text x="420" y="405" text-anchor="middle" fill="#f0f6fc" font-size="12">🎫</text>
+  <text x="420" y="430" text-anchor="middle" fill="#8b949e" font-size="8">Tickets</text>
+
+  <circle cx="500" cy="435" r="20" fill="#21262d" stroke="#f85149" stroke-width="2"/>
+  <circle cx="500" cy="435" r="18" fill="none" stroke="#f85149" stroke-width="1" opacity="0.3"/>
+  <text x="500" y="430" text-anchor="middle" fill="#f0f6fc" font-size="12">📊</text>
+  <text x="500" y="455" text-anchor="middle" fill="#8b949e" font-size="8">Monitor</text>
+
+  <circle cx="580" cy="420" r="20" fill="#21262d" stroke="#f85149" stroke-width="2"/>
+  <circle cx="580" cy="420" r="18" fill="none" stroke="#f85149" stroke-width="1" opacity="0.3"/>
+  <text x="580" y="415" text-anchor="middle" fill="#f0f6fc" font-size="12">💾</text>
+  <text x="580" y="440" text-anchor="middle" fill="#8b949e" font-size="8">Backup</text>
+  
+  <!-- Timer display -->
+  <rect x="600" y="480" width="120" height="40" fill="#0d1117" stroke="#f85149" stroke-width="1" rx="6"/>
+  <rect x="602" y="482" width="116" height="36" fill="none" stroke="#f85149" stroke-width="1" rx="4" opacity="0.3"/>
+  <text x="660" y="495" text-anchor="middle" fill="#f85149" font-size="10">TIME LEFT</text>
+  <text x="660" y="510" text-anchor="middle" fill="#f85149" font-size="16" font-weight="bold" filter="url(#glow)">05:00</text>
+
+  <!-- Game pieces scattered around -->
+  <!-- Magnifying glass -->
+  <circle cx="750" cy="150" r="15" fill="none" stroke="#d29922" stroke-width="2"/>
+  <circle cx="750" cy="150" r="13" fill="none" stroke="#d29922" stroke-width="1" opacity="0.3"/>
+  <line x1="760" y1="160" x2="770" y2="170" stroke="#d29922" stroke-width="2"/>
+
+  <!-- Coffee cup (essential for debugging) -->
+  <rect x="30" y="300" width="15" height="20" fill="#21262d" stroke="#30363d" stroke-width="1" rx="2"/>
+  <ellipse cx="37.5" cy="300" rx="7.5" ry="3" fill="#0d1117"/>
+  <path d="M45,305 Q50,305 50,310 Q50,315 45,315" stroke="#30363d" stroke-width="2" fill="none"/>
+
+  <!-- Dice (for random culprit selection) -->
+  <rect x="750" y="400" width="20" height="20" fill="#f0f6fc" stroke="#30363d" stroke-width="1" rx="2"/>
+  <circle cx="755" cy="405" r="1" fill="#0d1117"/>
+  <circle cx="765" cy="405" r="1" fill="#0d1117"/>
+  <circle cx="755" cy="410" r="1" fill="#0d1117"/>
+  <circle cx="765" cy="410" r="1" fill="#0d1117"/>
+  <circle cx="755" cy="415" r="1" fill="#0d1117"/>
+  <circle cx="765" cy="415" r="1" fill="#0d1117"/>
+
+  <!-- Notebook -->
+  <rect x="20" y="450" width="25" height="35" fill="#f0f6fc" stroke="#30363d" stroke-width="1"/>
+  <line x1="20" y1="460" x2="45" y2="460" stroke="#30363d" stroke-width="0.5"/>
+  <line x1="20" y1="470" x2="45" y2="470" stroke="#30363d" stroke-width="0.5"/>
+  <line x1="20" y1="480" x2="45" y2="480" stroke="#30363d" stroke-width="0.5"/>
+
+  <!-- Table edge shadow -->
+  <rect x="0" y="590" width="800" height="10" fill="#0d1117" opacity="0.7"/>
+</svg>

@@ -1,0 +1,69 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="alexBg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#21262d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1117;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="alexShirt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#30363d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#21262d;stop-opacity:1" />
+    </linearGradient>
+    <filter id="redGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="60" cy="60" r="58" fill="url(#alexBg)" stroke="#f85149" stroke-width="2" opacity="0.8"/>
+  <circle cx="60" cy="60" r="55" fill="none" stroke="#f85149" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Body/Shirt -->
+  <path d="M35 85 Q35 75 45 75 L75 75 Q85 75 85 85 L85 115 Q85 120 80 120 L40 120 Q35 120 35 115 Z" fill="url(#alexShirt)" stroke="#30363d" stroke-width="1"/>
+  
+  <!-- Head -->
+  <circle cx="60" cy="45" r="18" fill="#8b949e" stroke="#6e7681" stroke-width="1"/>
+  
+  <!-- Hair (messy - stressed from cleanup work) -->
+  <path d="M42 35 Q45 30 50 32 Q55 28 60 30 Q65 28 70 32 Q75 30 78 35 Q76 40 70 38 Q65 42 60 40 Q55 42 50 38 Q44 40 42 35" fill="#6e7681" stroke="#30363d" stroke-width="1"/>
+  
+  <!-- Eyes (tired/stressed) -->
+  <circle cx="55" cy="42" r="2" fill="#f0f6fc"/>
+  <circle cx="65" cy="42" r="2" fill="#f0f6fc"/>
+  <circle cx="55" cy="43" r="1" fill="#0d1117"/>
+  <circle cx="65" cy="43" r="1" fill="#0d1117"/>
+  
+  <!-- Eyebrows (furrowed) -->
+  <path d="M52 38 L58 40" stroke="#6e7681" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M62 40 L68 38" stroke="#6e7681" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Nose -->
+  <circle cx="60" cy="47" r="1" fill="#6e7681"/>
+  
+  <!-- Mouth (concerned) -->
+  <path d="M57 52 Q60 50 63 52" stroke="#6e7681" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  
+  <!-- Glasses (tech worker) -->
+  <circle cx="55" cy="42" r="6" fill="none" stroke="#8b949e" stroke-width="1.5"/>
+  <circle cx="65" cy="42" r="6" fill="none" stroke="#8b949e" stroke-width="1.5"/>
+  <path d="M61 42 L64 42" stroke="#8b949e" stroke-width="1"/>
+  
+  <!-- DevOps Badge/Logo on shirt -->
+  <rect x="55" y="85" width="10" height="8" fill="#f85149" rx="2" filter="url(#redGlow)"/>
+  <text x="60" y="91" text-anchor="middle" fill="#f0f6fc" font-size="6" font-family="monospace">OPS</text>
+  
+  <!-- Cleanup tools in pocket -->
+  <rect x="70" y="82" width="2" height="8" fill="#d29922" opacity="0.8"/>
+  <rect x="73" y="80" width="2" height="10" fill="#d29922" opacity="0.8"/>
+  
+  <!-- Stress lines -->
+  <path d="M45 50 Q42 52 45 54" stroke="#f85149" stroke-width="0.5" opacity="0.6" fill="none"/>
+  <path d="M75 50 Q78 52 75 54" stroke="#f85149" stroke-width="0.5" opacity="0.6" fill="none"/>
+  
+  <!-- Name tag -->
+  <rect x="45" y="95" width="20" height="8" fill="#21262d" stroke="#f85149" stroke-width="0.5" rx="1"/>
+  <text x="55" y="100" text-anchor="middle" fill="#f85149" font-size="4" font-family="monospace">ALEX</text>
+</svg>

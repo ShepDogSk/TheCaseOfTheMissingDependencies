@@ -11,6 +11,10 @@ class DetectiveGame {
         };
         
         this.timer = null;
+        this.selectedSuspect = null;
+        this.currentEvidence = null;
+        this.currentClueArea = null;
+        this.currentClueType = null;
         this.initializeGame();
     }
 
@@ -42,6 +46,7 @@ class DetectiveGame {
             closeBtn.addEventListener('click', () => this.closeModal());
         });
         document.getElementById('collect-evidence').addEventListener('click', () => this.collectCurrentEvidence());
+        document.getElementById('cancel-investigation').addEventListener('click', () => this.cancelInvestigation());
         
         // Game controls
         document.getElementById('make-accusation').addEventListener('click', () => this.makeAccusation());
@@ -111,17 +116,24 @@ class DetectiveGame {
         if (!this.gameState.gameActive) return;
 
         const clueType = clueArea.dataset.clue;
+
+        // Check if already investigated
         if (this.gameState.cluesInvestigated.includes(clueType)) {
             this.showModal('Already Investigated', 'You\'ve already thoroughly investigated this area.');
             this.showSoundEffect('🔍');
             return;
         }
 
+        // Store current clue info for potential evidence collection
+        this.currentClueArea = clueArea;
+        this.currentClueType = clueType;
+
+        // Show modal without automatically collecting evidence
         const clueData = this.getClueData(clueType);
         this.showClueModal(clueData);
-        clueArea.classList.add('investigated', 'discovered');
-        this.gameState.cluesInvestigated.push(clueType);
         this.showSoundEffect('📋');
+
+        console.log('🔍 DEBUG: Opened investigation modal for:', clueType);
     }
 
     getClueData(clueType) {
@@ -242,13 +254,30 @@ done
     }
 
     collectCurrentEvidence() {
-        if (this.currentEvidence && !this.gameState.evidenceCollected.includes(this.currentEvidence)) {
-            this.gameState.evidenceCollected.push(this.currentEvidence);
-            this.addEvidenceToBoard(this.currentEvidence);
-            this.updateDisplay();
-            this.showSoundEffect('✅');
+        try {
+            // Only collect if we have current evidence and it's not already collected
+            if (this.currentEvidence && !this.gameState.evidenceCollected.includes(this.currentEvidence)) {
+                // Add evidence to collection
+                this.gameState.evidenceCollected.push(this.currentEvidence);
+                this.addEvidenceToBoard(this.currentEvidence);
+
+                // Mark clue area as investigated (only when evidence is collected)
+                if (this.currentClueArea && this.currentClueType) {
+                    this.currentClueArea.classList.add('investigated', 'discovered');
+                    this.gameState.cluesInvestigated.push(this.currentClueType);
+                    console.log('✅ DEBUG: Evidence collected and clue marked as investigated:', this.currentClueType);
+                }
+
+                this.updateDisplay();
+                this.showSoundEffect('✅');
+            }
+
+            // Clear current investigation state
+            this.clearCurrentInvestigation();
+            this.closeModal();
+        } catch (error) {
+            console.error('❌ ERROR: Failed to collect evidence:', error);
         }
-        this.closeModal();
     }
 
     addEvidenceToBoard(evidence) {
@@ -257,6 +286,21 @@ done
         evidenceItem.className = 'evidence-item';
         evidenceItem.textContent = `📋 ${evidence}`;
         evidenceList.appendChild(evidenceItem);
+    }
+
+    // Clear current investigation state
+    clearCurrentInvestigation() {
+        this.currentClueArea = null;
+        this.currentClueType = null;
+        this.currentEvidence = null;
+        console.log('🧹 DEBUG: Cleared current investigation state');
+    }
+
+    // Cancel investigation without collecting evidence
+    cancelInvestigation() {
+        console.log('🚫 DEBUG: Investigation cancelled by user');
+        this.showSoundEffect('❌');
+        this.closeModal();
     }
 
     selectSuspect(suspectCard) {
@@ -328,20 +372,21 @@ done
         try {
             // Close clue modal
             const clueModal = document.getElementById('clue-modal');
-            if (clueModal) {
+            if (clueModal && clueModal.style.display === 'block') {
                 clueModal.style.display = 'none';
                 console.log('🔒 DEBUG: Clue modal closed');
+
+                // Clear investigation state when closing without collecting evidence
+                this.clearCurrentInvestigation();
+                console.log('🚫 DEBUG: Investigation cancelled - clue remains uninvestigated');
             }
 
             // Close game over modal
             const gameOverModal = document.getElementById('game-over-modal');
-            if (gameOverModal) {
+            if (gameOverModal && gameOverModal.style.display === 'block') {
                 gameOverModal.style.display = 'none';
                 console.log('🔒 DEBUG: Game over modal closed');
             }
-
-            // Clear current evidence when closing clue modal
-            this.currentEvidence = null;
 
             console.log('✅ DEBUG: All modals closed successfully');
         } catch (error) {
@@ -404,6 +449,8 @@ done
         
         this.selectedSuspect = null;
         this.currentEvidence = null;
+        this.currentClueArea = null;
+        this.currentClueType = null;
         
         // Restart timer and update display
         clearInterval(this.timer);

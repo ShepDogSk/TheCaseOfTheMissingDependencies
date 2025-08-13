@@ -758,6 +758,50 @@ h3 {
     background: rgba(248, 81, 73, 0.2);
 }
 
+/* Modal buttons container */
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-primary);
+}
+
+.modal-buttons button {
+    min-width: 140px;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.modal-buttons .btn-primary {
+    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+    border: none;
+    color: var(--text-primary);
+    box-shadow: 0 4px 16px rgba(248, 81, 73, 0.4);
+}
+
+.modal-buttons .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(248, 81, 73, 0.5);
+}
+
+.modal-buttons .btn-secondary {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    color: var(--text-secondary);
+}
+
+.modal-buttons .btn-secondary:hover {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
 /* Buttons */
 .btn-primary, .btn-secondary {
     padding: 14px 28px;
